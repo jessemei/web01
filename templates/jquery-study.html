@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery</title>
+    <script type="application/javascript" src="jquery1.js"></script>
+    <style>
+    .divframe{
+        width:260px;
+        border:solid 1px #666;
+        font-size: 10pt;
+    }
+    .divTitle{
+        background-color: #eee;
+        padding: 5px;
+    }
+    .divcontent{
+        padding: 5px;
+        display: none;
+    }
+    .divcurrcolor{
+        background-color: red;
+    }
+</style>
+    <script type="application/javascript">
+    $(document).ready(function () {
+        $(".divTitle").click(function () {
+            $(this).addClass('divcurrcolor')
+                    .next(".divcontent").css('display','block')
+
+        })
+
+    })
+
+</script>
+</head>
+
+<body>
+<h1>hhhhh</h1>
+
+
+<div class="divframe">
+    <div class="divTitle">主题</div>
+    <div class="divcontent">
+        <a href="#">链接</a>
+        <a href="#">链接</a>
+        <a href="#">链接</a>
+    </div>
+</div>
+</body>
+</html>
