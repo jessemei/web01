@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>jquery</title>
     <script type="application/javascript" src="jquery1.js"></script>
+    <script type="application/javascript" src="test.js"></script>
     <style>
     .divframe{
         width:260px;
@@ -11,7 +12,7 @@
         font-size: 10pt;
     }
     .divTitle{
-        background-color: #eee;
+        background-color: #80eee5;
         padding: 5px;
     }
     .divcontent{
@@ -19,7 +20,7 @@
         display: none;
     }
     .divcurrcolor{
-        background-color: red;
+        background-color: #deddff;
     }
 </style>
     <script type="application/javascript">
@@ -31,13 +32,15 @@
         })
 
     })
-
 </script>
+
 </head>
 
-<body>
+<body>r
 <h1>我是一个分支2</h1>
 
+<div id="test1"><h1>分支3</h1></div>
+<button type="button" value="jjj">点击</button>
 
 <div class="divframe">
     <div class="divTitle">javascript</div>
@@ -48,4 +51,15 @@
     </div>
 </div>
 </body>
+<script>
+    function change() {
+        var c = $('#test1').text('<h1>修改后的内容</h1>')
+    }
+    $("button").click(a=['修改'],function () {
+        var c = $('#test1').text(a[0])
+    });
+    var b = $('#test1').html()
+    var a = $('#test1').text()
+    console.log(b,a)
+</script>
 </html>

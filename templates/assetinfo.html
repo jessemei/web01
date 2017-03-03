@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+       <script type="text/javascript" src=/static/assets/js/achart.js></script>
+    <style>
+        #main{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main" style="width: 500px;height:390px;">
+
+    </div>
+
+    <div id="test" style="width: 500px;height:390px;">
+
+    </div>
+        <div id="yusuan" style="width: 500px;height:390px;">
+
+    </div>
+
+
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        myChart.setOption({
+            tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c}"
+    },
+
+    series : [
+        {
+            name: '资产总额',
+            type: 'pie',
+            radius: '55%',
+            data:[
+                {value:{{ data.0 | floatformat:"2" }}, name:'销售部'},
+                {value:{{ data.1 | floatformat:"2" }}, name:'采购部'},
+                {value:{{ data.2 | floatformat:"2" }}, name:'信息技术部'},
+                {value:{{ data.3 | floatformat:"2" }}, name:'客服部'},
+                {value:{{ data.4 | floatformat:"2" }}, name:'市场部'},
+                {value:{{ data.5 | floatformat:"2" }}, name:'事业加盟部'},
+                {value:{{ data.6 | floatformat:"2" }}, name:'战略研究部'},
+                {value:{{ data.7 | floatformat:"2" }}, name:'人事行政部'},
+                {value:{{ data.8 | floatformat:"2" }}, name:'财务部'},
+                {value:{{ data.9 | floatformat:"2" }}, name:'仓储配送部'}
+
+            ]
+        }
+    ]
+})
+      var myChart = echarts.init(document.getElementById('test'));
+
+        // 指定图表的配置项和数据
+        myChart.setOption({
+            tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c}"
+    },
+
+    series : [
+        {
+            name: '资产总额',
+            type: 'pie',
+            radius: '55%',
+            data:[
+                {value:{{ data.0 | floatformat:"2" }}, name:'销售部'},
+                {value:{{ data.1 | floatformat:"2" }}, name:'采购部'},
+                {value:{{ data.2 | floatformat:"2" }}, name:'信息技术部'},
+                {value:{{ data.3 | floatformat:"2" }}, name:'客服部'},
+                {value:{{ data.4 | floatformat:"2" }}, name:'市场部'},
+                {value:{{ data.5 | floatformat:"2" }}, name:'事业加盟部'},
+                {value:{{ data.6 | floatformat:"2" }}, name:'战略研究部'},
+                {value:{{ data.7 | floatformat:"2" }}, name:'人事行政部'},
+                {value:{{ data.8 | floatformat:"2" }}, name:'财务部'},
+                {value:{{ data.9 | floatformat:"2" }}, name:'仓储配送部'}
+
+            ]
+        }
+    ]
+})
+
+  var myChart = echarts.init(document.getElementById('yusuan'));
+
+        // 指定图表的配置项和数据
+        myChart.setOption({
+tooltip : {
+        formatter: "{a} <br/>{b} : {c}%"
+    },
+    toolbox: {
+        feature: {
+            restore: {},
+            saveAsImage: {}
+        }
+    },
+     series: [
+        {
+            name: '预算余额',
+            type: 'gauge',
+            detail: {formatter:'{value}%'},
+            data: [{value: 80, name: '预算使用'}]
+        }
+    ]
+})
+
+
+    </script>
+
+</body>
+</html>
