@@ -1,0 +1,269 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <meta name="viewport" content="width=device-width" />  
+    <title>CRUD实例</title>  
+    <!-- 引入CSS -->  
+    <link href="bootstrap.min.css" rel="stylesheet" />  
+    <link href="~/Content/bootstrap_plugin/bootstrap-datetimepicker-0.0.11/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />  
+    <link href="~/Content/selfDefine/dataForm.css" rel="stylesheet" />  
+    <!-- 引入JS -->  
+    <script src="jquery.js"></script>  
+	    <script src="1.js"></script>  
+    <script src="~/Content/bootstrap2.3.2/js/bootstrap.min.js"></script>  
+    <script src="~/Content/bootstrap_plugin/bootstrap-datetimepicker-0.0.11/js/bootstrap-datetimepicker.min.js"></script>  
+    <script src="~/Content/bootstrap_plugin/bootstrap-datetimepicker-0.0.11/js/bootstrap-datetimepicker.zh-CN.js"></script>  
+    <script src="~/Scripts/CRUD/crud.js"></script>  
+</head>  
+<body>  
+    <div class="container-fluid">  
+        <!-- start 查询区域 -->  
+        <div class="form-inline" id="queryDIV" style="margin-top: 10px;">  
+            <div id="datetimepicker" class="input-append date">  
+                <input id="queryStartedAt" name="queryStartedAt" type="text"></input>  
+                <span class="add-on">  
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>  
+                </span>  
+            </div>  
+            <input id="retrieveBtn" type="button" class="btn btn-primary" value="查询" />  
+        </div>  
+        <!-- end 查询区域 -->  
+        <!-- start 操作区域 -->  
+        <div class="form-inline" id="operatorDIV" style="margin-top: 10px;">  
+            <input id="detailBtn" type="button" class="btn btn-success" value="详情" />  
+            <input id="createBtn" type="button" class="btn" value="新增" />  
+            <input id="updateBtn" type="button" class="btn btn-warning" value="修改" />  
+            <input id="deleteBtn" type="button" class="btn btn-danger" value="删除" />  
+        </div>  
+        <!-- end 操作区域 -->  
+        <!-- start 数据区域 -->  
+        <div id="dataDIV" style="margin-top: 10px; min-height: 410px;">  
+            <table id="dataTable" class="table table-bordered">  
+                <thead>  
+                    <tr>  
+                        <th>选择</th>  
+                        <th>序号</th>  
+                        <th>主键ID</th>  
+                        <th>金额</th>  
+                        <th>账号</th>  
+                        <th>URL</th>  
+                        <th>邮箱地址</th>  
+                        <th>固定电话</th>  
+                        <th>移动手机号码</th>  
+                        <th>IP地址</th>  
+                        <th>QQ号码</th>  
+                        <th>身份证号码</th>  
+                        <th>邮政编码</th>  
+                    </tr>  
+                </thead>  
+                <tbody>  
+                </tbody>  
+            </table>  
+        </div>  
+        <!-- end 数据区域 -->  
+        <!-- start 分页隐藏区域 -->  
+        <div id="pageHiddenDIV" style="display: none;">  
+            <input type="hidden" value="1" id="currentPage" />  
+            <input type="hidden" value="10" id="pageSize" />  
+            <input type="hidden" value="0" id="totalPage" />  
+            <input type="hidden" value="0" id="totalCount" />  
+        </div>  
+        <!-- end 分页隐藏区域 -->  
+        <!-- start 分页信息区域 -->  
+        <div id="pageInfoDIV" class="pagination">  
+            <ul>  
+                <li><a href="javascript:void(0);" id="pageInfo">总共0条记录，总共1页，当前第1页</a></li>  
+            </ul>  
+            <ul id="pageLinks">  
+            </ul>  
+        </div>  
+        <!-- end 分页信息区域 -->  
+    </div>  
+    <!-- satart 提示信息模态窗口 -->  
+    <div id="infoModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">  
+        <div class="modal-header">  
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>  
+            <h3 id="infoModalLabel">提示信息</h3>  
+        </div>  
+        <div class="modal-body">  
+            <p id="infoModalMsg" class="text-info"></p>  
+        </div>  
+        <div class="modal-footer">  
+            <button class="btn" data-dismiss="modal">确定</button>  
+        </div>  
+    </div>  
+    <!-- end 提示信息模态窗口 -->  
+    <!-- start 详情的模态窗口 -->  
+    <div id="detailModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">  
+        <div class="modal-header">  
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>  
+            <h3 id="detailModalLabel">详细信息</h3>  
+        </div>  
+        <div class="modal-body">  
+            <table class="table table-bordered">  
+                <tr>  
+                    <th>金额：</th>  
+                    <td id="detailMoneyType"></td>  
+                    <th>账号：</th>  
+                    <td id="detailAccountType"></td>  
+                </tr>  
+                <tr>  
+                    <th>URL：</th>  
+                    <td id="detailUrlType"></td>  
+                    <th>邮箱地址：</th>  
+                    <td id="detailEmailType"></td>  
+                </tr>  
+            </table>  
+        </div>  
+        <div class="modal-footer">  
+            <button class="btn" data-dismiss="modal" aria-hidden="true">确定</button>  
+        </div>  
+    </div>  
+    <!-- end 详情的模态窗口 -->  
+    <!-- start 新增数据模态窗口 -->  
+    <div id="createModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">  
+        <div class="modal-header">  
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>  
+            <h3 id="createModalLabel">新增记录</h3>  
+        </div>  
+        <div class="modal-body">  
+  
+            <div class="dataForm">  
+                <div class="dataRow">  
+                    <div class="dataItem">  
+                        <div>  
+                            <div class="textName"><strong>金额<span class="requiredMarker">(必填)</span>：</strong></div>  
+                            <div id="createMoneyTypeErrorMsg" class="textErrorMsg"></div>  
+                        </div>  
+                        <div>  
+                            <input id="createMoneyType" type="text" />  
+                        </div>  
+                    </div>  
+                    <div class="dataItem">  
+                        <div>  
+                            <div class="textName"><strong>账号<span class="requiredMarker">(必填)</span>：</strong></div>  
+                            <div id="createAccountTypeErrorMsg" class="textErrorMsg"></div>  
+                        </div>  
+                        <div>  
+                            <input id="createAccountType" type="text" />  
+                        </div>  
+                    </div>  
+                </div>  
+                <div class="dataRow">  
+                    <div class="dataItem">  
+                        <div>  
+                            <div class="textName"><strong>URL<span class="requiredMarker">(必填)</span>：</strong></div>  
+                            <div id="createUrlTypeErrorMsg" class="textErrorMsg"></div>  
+                        </div>  
+                        <div>  
+                            <input id="createUrlType" type="text" />  
+                        </div>  
+                    </div>  
+                    <div class="dataItem">  
+                        <div>  
+                            <div class="textName"><strong>邮箱地址<span class="requiredMarker">(必填)</span>：</strong></div>  
+                            <div id="createEmailTypeErrorMsg" class="textErrorMsg"></div>  
+                        </div>  
+                        <div>  
+                            <input id="createEmailType" type="text" />  
+                        </div>  
+                    </div>  
+                </div>  
+            </div>  
+        </div>  
+  
+        <div class="modal-footer">  
+            <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>  
+            <button id="resetCreateBtn" class="btn btn-warning">重置</button>  
+            <button id="doCreateBtn" class="btn btn-primary">确定</button>  
+        </div>  
+    </div>  
+    @*bootstrap2样式的表单  
+    <form class="form-horizontal">  
+        <div class="control-group warning">  
+            <label class="control-label" for="inputWarning">Input with warning</label>  
+            <div class="controls">  
+                <input type="text" id="inputWarning">  
+                <span class="help-inline">Something may have gone wrong</span>  
+            </div>  
+        </div>  
+    </form>  
+    *@  
+    <!-- end 新增数据模态窗口 -->  
+    <!-- start 更新数据模态窗口 -->  
+    <div id="updateModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">  
+        <div class="modal-header">  
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>  
+            <h3 id="updateModalLabel">更新记录</h3>  
+        </div>  
+        <div class="modal-body">  
+  
+            <div class="dataForm">  
+                <div class="dataRow">  
+                    <div class="dataItem">  
+                        <div>  
+                            <div class="textName"><strong>金额<span class="requiredMarker">(必填)</span>：</strong></div>  
+                            <div id="updateMoneyTypeErrorMsg" class="textErrorMsg"></div>  
+                        </div>  
+                        <div>  
+                            <input id="updateId" type="hidden" />  
+                            <input id="updateMoneyType" type="text" />  
+                        </div>  
+                    </div>  
+                    <div class="dataItem">  
+                        <div>  
+                            <div class="textName"><strong>账号<span class="requiredMarker">(必填)</span>：</strong></div>  
+                            <div id="updateAccountTypeErrorMsg" class="textErrorMsg"></div>  
+                        </div>  
+                        <div>  
+                            <input id="updateAccountType" type="text" />  
+                        </div>  
+                    </div>  
+                </div>  
+                <div class="dataRow">  
+                    <div class="dataItem">  
+                        <div>  
+                            <div class="textName"><strong>URL<span class="requiredMarker">(必填)</span>：</strong></div>  
+                            <div id="updateUrlTypeErrorMsg" class="textErrorMsg"></div>  
+                        </div>  
+                        <div>  
+                            <input id="updateUrlType" type="text" />  
+                        </div>  
+                    </div>  
+                    <div class="dataItem">  
+                        <div>  
+                            <div class="textName"><strong>邮箱地址<span class="requiredMarker">(必填)</span>：</strong></div>  
+                            <div id="updateEmailTypeErrorMsg" class="textErrorMsg"></div>  
+                        </div>  
+                        <div>  
+                            <input id="updateEmailType" type="text" />  
+                        </div>  
+                    </div>  
+                </div>  
+            </div>  
+        </div>  
+  
+        <div class="modal-footer">  
+            <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>  
+            <button id="resetUpdateBtn" class="btn btn-warning">重置</button>  
+            <button id="doUpdateBtn" class="btn btn-primary">确定</button>  
+        </div>  
+    </div>  
+    <!-- end 更新数据模态窗口 -->  
+    <!-- start 删除前确认模态窗口 -->  
+    <div id="deleteConfirmModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">  
+        <div class="modal-header">  
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>  
+            <h3 id="deleteConfirmModalLabel">确认信息</h3>  
+        </div>  
+        <div class="modal-body">  
+            <p id="deleteConfirmMsg" class="text-warning"></p>  
+        </div>  
+        <div class="modal-footer">  
+            <button class="btn" data-dismiss="modal">取消</button>  
+            <button id="doDeleteBtn" class="btn btn-primary">确定</button>  
+        </div>  
+    </div>  
+    <!-- end 删除前确认模态窗口 -->  
+</body>  
+</html>  
