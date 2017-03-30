@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href=/static/assets/css/boot3.css />
+    <script type="text/javascript" src=/static/assets/js/jquery-1.12.4.js></script>
+    <script type="text/javascript" src=/static/assets/js/bootstrap.js></script>
+    <style>
+        .modal-content{
+            position: absolute;
+            left: 302px;
+            top: 167px;
+            width: 50%;
+            height: 50%;
+
+            opacity: 1;
+
+        }
+        .tab{
+            width: 174px;
+            height: 26px;
+        }
+    </style>
+</head>
+<body>
+<div class="modal-content">
+
+			<div id="test">
+                <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+                    修改资产信息
+				</h4>
+			    </div>
+    <form action="#" method="post" class="definewidth m20">
+    <table class="table table-bordered ">
+    <tr>
+        <td ><label>资产标签</label></td>
+        <td><input id="zcbq" type="text" name="zcbq"/></td>
+        <td><label>保管人</label></td>
+        <td><input id="name" type="text" name="bgr"/></td>
+    </tr>
+
+    <tr>
+        <td ><label>品牌</label></td>
+        <td><input id="brand" type="text" name="brand"/></td>
+         <td><label>数量</label></td>
+        <td><input id="num" type="text" name="num"/></td>
+    </tr>
+
+    <tr>
+        <td><label>资产原值</label></td>
+        <td><input id="yuanzhi" type="text" name="realname"/></td>
+        <td><label>购进时间</label></td>
+        <td><input id="gdate" type="date" name="gdate"/></td>
+    </tr>
+
+    <tr>
+        <td><label>资产类型</label></td>
+        <td><input id="atype" type="text" name="email"/></td>
+                <td><label>单位</label></td>
+        <td><input id="auint" type="text" name="auint"/></td>
+    </tr>
+
+
+     <tr>
+        <td><label>部门</label></td>
+         <td>
+ <select class="tab" id="dept" name="dept" >
+    <option  value="销售部">销售部</option>
+    <option  value="采购部">采购部</option>
+    <option  value="信息技术部">信息技术部</option>
+    <option  value="客服部">客服部</option>
+    <option  value="市场部">市场部</option>
+    <option  value="事业加盟部">事业加盟部</option>
+    <option  value="战略研究部">战略研究部</option>
+    <option  value="人事行政部">人事行政部</option>
+    <option  value="财务部">财务部</option>
+    <option  value="仓储配送部">仓储配送部</option>
+</select ></td>
+         <td><label>资产ID</label></td>
+        <td><input id="id" type="text" name="id"/></td>
+    </tr>
+
+    <tr>
+        <td><label>状态</label></td>
+        <td>
+<select class="tab" id="status" name="status">
+    <option  value=0>闲置</option>
+    <option  value=1>在用</option>
+</select >
+        </td>
+                <td class="tableleft"></td>
+        <td>
+            <button  id="sub" class="btn btn-primary" type="button">保存</button> &nbsp;&nbsp;<button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
+        </td>
+    </tr>
+
+
+    </table>
+</form>
+</div>
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,312 @@
+<head>
+
+       <link rel="stylesheet" type="text/css" href=/static/assets/css/boot3.css />
+    <link rel="stylesheet" type="text/css" href= /static/Css/bootstrap-responsive.css/>
+    <link rel="stylesheet" type="text/css" href=/static/Css/style.css />
+    <script type="text/javascript" src=/static/assets/js/jquery.js></script>
+    <style>
+        .table{
+            font-size: 5px;
+        }
+                       .tab{
+            width: 152px;
+            height: 23px;
+        }
+        #test{
+            position: absolute;
+            left: 302px;
+            top: 167px;
+            width: 50%;
+            height: 50%;
+            background-color: #F0F0F0;
+            display: none;
+            opacity: 1;
+
+        }
+         .modal-content{
+            position: absolute;
+            left: 392px;
+            top: 187px;
+            width: 30%;
+            height: 25%;
+            opacity: 1;
+            display: none;
+
+        }
+    </style>
+</head>
+
+<div  class="span13">
+<form class="form-inline definewidth m20" action="/search/" method="post">
+    <div class="search">
+    <select class="selectpicker" name="tiaojian" style="width: 87px;height: 24px">
+         <option value="b">保管人</option>
+         <option value="z">资产编号</option>
+    </select>
+    </div>
+   <div>
+    <input type="text" name="username" id="username"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
+    <button id="search" type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew"><a style="text-decoration: none;color:#e6f2ff" href="http://127.0.0.1:8000/page/1/">返回</a></button>
+    </div>
+</form>
+<table class="table table-bordered table-hover definewidth m10" >
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>资产标签</th>
+        <th>保管人</th>
+        <th>品牌</th>
+        <th>数量</th>
+        <th>资产原值</th>
+        <th>使用状态</th>
+        <th>购进时间</th>
+        <th>资产类型</th>
+        <th>单位</th>
+        <th>部门</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    {% for foo in data %}
+	     <tr id="{{ foo.id }}">
+            <td>{{ foo.id }}</td>
+            <td>{{ foo.Zcbh }}</td>
+            <td >{{ foo.Bgr }}</td>
+            <td width="506px">{{ foo.Brand }}</td>
+            <td>{{ foo.Count }}</td>
+            <td>{{ foo.Price }}</td>
+            <td>{{ foo.get_Status_display }}</td>
+            <td>{{ foo.gtime|date:"Y-m-d" }}</td>
+            <td>{{ foo.get_Atype_display }}</td>
+            <td>{{ foo.Aunit }}</td>
+            <td>{{ foo.get_Dname_display }}</td>
+            <td width="72px"><a href="javascript:;" onclick="zhezhao({{ foo.id }})">编辑</a>|
+                <a href="javascript:;" onclick="del({{ foo.id }})">删除</a></td>
+        </tr>
+    {% endfor %}
+</table>
+
+
+
+		</div>
+
+		<div id="test">
+                <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+                    修改资产信息
+				</h4>
+			    </div>
+    <form action="#" method="post" class="definewidth m20">
+    <table class="table table-bordered ">
+    <tr>
+        <td ><label>资产标签</label></td>
+        <td><input id="zcbq" type="text" name="zcbq"/></td>
+        <td><label>保管人</label></td>
+        <td><input id="name" type="text" name="bgr"/></td>
+    </tr>
+
+    <tr>
+        <td ><label>品牌</label></td>
+        <td><input id="brand" type="text" name="brand"/></td>
+         <td><label>数量</label></td>
+        <td><input id="num" type="text" name="num"/></td>
+    </tr>
+
+    <tr>
+        <td><label>资产原值</label></td>
+        <td><input id="yuanzhi" type="text" name="realname"/></td>
+        <td><label>购进时间</label></td>
+        <td><input id="gdate" type="date" name="gdate"/></td>
+    </tr>
+
+    <tr>
+        <td><label>资产类型</label></td>
+        <td><input id="atype" type="text" name="email"/></td>
+                <td><label>单位</label></td>
+        <td><input id="auint" type="text" name="auint"/></td>
+    </tr>
+
+
+     <tr>
+        <td><label>部门</label></td>
+         <td>
+ <select class="tab" id="dept" name="dept" >
+    <option  value="销售部">销售部</option>
+    <option  value="采购部">采购部</option>
+    <option  value="信息技术部">信息技术部</option>
+    <option  value="客服部">客服部</option>
+    <option  value="市场部">市场部</option>
+    <option  value="事业加盟部">事业加盟部</option>
+    <option  value="战略研究部">战略研究部</option>
+    <option  value="人事行政部">人事行政部</option>
+    <option  value="财务部">财务部</option>
+    <option  value="仓储配送部">仓储配送部</option>
+</select ></td>
+         <td><label>资产ID</label></td>
+        <td><input id="id" type="text" name="id"/></td>
+    </tr>
+
+    <tr>
+        <td><label>状态</label></td>
+        <td>
+<select class="tab" id="status" name="status">
+    <option  value=0>闲置</option>
+    <option  value=1>在用</option>
+</select >
+        </td>
+                <td class="tableleft"></td>
+        <td>
+            <button  id="sub" class="btn btn-primary" type="button">保存</button> &nbsp;&nbsp;<button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
+        </td>
+    </tr>
+
+
+    </table>
+</form>
+</div>
+</div>
+<div class="modal-content" id="del">
+			<div class="modal-header">
+				<button type="button" id="quit" class="close" data-dismiss="modal" aria-hidden="true">×
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					确定删除当前资产吗
+				</h4>
+			</div>
+			<div class="modal-body" id="modalbody">
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="quit1" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+				<button type="button" id="tidel" class="btn btn-primary">
+					确认
+				</button>
+			</div>
+		</div>
+
+
+</div>
+
+<script>
+  function zhezhao(foo) {
+      var a = $('#'+foo)
+      var id = a.children().eq(0).text();
+      var zcbq = a.children().eq(1).text();
+      var bgr = a.children().eq(2).text();
+      var Brand = a.children().eq(3).text();
+      var num = a.children().eq(4).text();
+      var yuanzhi = a.children().eq(5).text();
+      var status = a.children().eq(6).text();
+      var gdate = a.children().eq(7).text();
+      var atype = a.children().eq(8).text();
+      var auint = a.children().eq(9).text();
+      var dept = a.children().eq(10).text();
+      var dept1 = a.children().eq(11).text();
+      $('#name').val(bgr);
+      $('#zcbq').val(zcbq);
+      $('#brand').val(Brand)
+      $('#num').val(num)
+      $('#yuanzhi').val(yuanzhi)
+      $('#status').val(status)
+      $('#gdate').val(gdate)
+      $('#atype').val(atype)
+      $('#auint').val(auint)
+      $('#dept').val(dept)
+      $('#id').val(id)
+      var div1 = document.getElementById('test');
+
+        div1.style.display='block';
+  };
+
+  $('#backid,.close').click(function () {
+    var div1 = document.getElementById('test');
+    div1.style.display='none';
+  })
+
+
+  		    $('#sub').click(function () {
+
+
+                $.ajax({
+                    url:'/edit/',
+                data:{Aname: $('#name').val(),
+                zcbq:$('#zcbq').val(),
+                brand:$('#brand').val(),
+                num:$('#num').val(),
+                yuanzhi:$('#yuanzhi').val(),
+                status:$('#status').val(),
+                gdate:$('#gdate').val(),
+                atype:$('#atype').val(),
+                auint:$('#auint').val(),
+                dept:$('#dept').val(),
+                id:$('#id').val()
+                    },
+                    type:'POST',
+                    success:function (collback) {
+                        var obj = jQuery.parseJSON(collback);
+                        if (obj.status == 'OK'){
+                            var div1 = document.getElementById('test');
+                            div1.style.display='none';
+                            alert('OK');
+                        }else {
+                            alert('更新失败')
+                        }
+
+                    }
+
+                })
+            })
+
+function search(foo) {
+                $.ajax({
+                    url:'search/',
+                    data:{conditon:$('#username').val()},
+                    type:'POST',
+                    success:function () {
+
+                    }
+
+                })
+
+}
+function del(foo) {
+      var a = $('#' + foo)
+      var zcbh = a.children().eq(1).text();
+      var id = a.children().eq(0).text();
+      var div1 = document.getElementById('del');
+      div1.style.display='block';
+      $('#modalbody').html(zcbh);
+        $('#tidel').click(function () {
+      $.ajax({
+          url:'/del/',
+          data:{aid:id},
+          type:'POST',
+          success:function (collback) {
+              var obj = jQuery.parseJSON(collback);
+               if (obj.status == 'OK'){
+                            $('#del').css("display","none")
+                            alert('OK');
+                            window.location.reload();
+
+                        }else {
+                            alert('更新失败')
+                        }
+
+
+          }
+
+
+      })
+  })
+  }
+$('#quit,#quit1').click(function () {
+       var div1 = document.getElementById('del')
+      div1.style.display='none';
+
+  })
+</script>
+
+
+

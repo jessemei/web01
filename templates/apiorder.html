@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href=/static/Css/bootstrap.css/>
+    <link rel="stylesheet" type="text/css" href= /static/Css/bootstrap-responsive.css/>
+    <link rel="stylesheet" type="text/css" href=/static/Css/style.css />
+    <script type="text/javascript" src=/static/Js/jquery.js></script>
+    <script type="text/javascript" src=/static/Js/jquery.sorted.js></script>
+    <script type="text/javascript" src=/static/Js/bootstrap.js></script>
+    <script type="text/javascript" src=/static/Js/ckform.js></script>
+    <script type="text/javascript" src=/static/Js/common.js></script></head>
+<body>
+<table class="table table-bordered table-hover definewidth m10">
+    <thead>
+    <tr>
+        <th>API名称</th>
+        <th>未处理订单</th>
+        <th>历史订单</th>
+        <th>预下订单</th>
+        <th>商品数</th>
+		<th>状态</th>
+        <th>更新商品</th>
+    </tr>
+    </thead>
+        <tr>
+            {% for i in data1 %}
+                <td>{{ i }}</td>
+            {% endfor %}
+			<td>正常</td>
+          <td><a href="edit.html">执行更新</a></td>
+    <tr>
+         {% for i in data2 %}
+                <td>{{ i }}</td>
+            {% endfor %}
+				<td>正常</td>
+                <td><a href="edit.html">执行更新</a></td>
+    </tr>
+ <tr>
+         {% for i in data3 %}
+                <td>{{ i }}</td>
+            {% endfor %}
+				<td>正常</td>
+                <td><a href="edit.html">执行更新</a></td>
+    </tr>
+ <tr>
+         {% for i in data4 %}
+                <td>{{ i }}</td>
+            {% endfor %}
+				<td>正常</td>
+                <td><a href="edit.html">执行更新</a></td>
+    </tr>
+ <tr>
+         {% for i in data5 %}
+                <td>{{ i }}</td>
+            {% endfor %}
+				<td>正常</td>
+                <td><a href="edit.html">执行更新</a></td>
+    </tr>
+ <tr>
+         {% for i in data6 %}
+                <td>{{ i }}</td>
+            {% endfor %}
+				<td>正常</td>
+                <td><a href="edit.html">执行更新</a></td>
+    </tr>
+ <tr>
+         {% for i in data7 %}
+                <td>{{ i }}</td>
+            {% endfor %}
+				<td>正常</td>
+                <td><a href="edit.html">执行更新</a></td>
+    </tr>
+ <tr>
+         {% for i in data8 %}
+                <td>{{ i }}</td>
+            {% endfor %}
+				<td>正常</td>
+                <td><a href="edit.html">执行更新</a></td>
+    </tr>
+<tr>
+         {% for i in data9 %}
+                <td>{{ i }}</td>
+            {% endfor %}
+				<td>正常</td>
+                <td><a href="edit.html">执行更新</a></td>
+    </tr>
+<tr>
+         {% for i in data10 %}
+                <td>{{ i }}</td>
+            {% endfor %}
+				<td>正常</td>
+                <td><a href="edit.html">执行更新</a></td>
+    </tr>
+ <tr>
+         {% for i in data12 %}
+                <td>{{ i }}</td>
+            {% endfor %}
+				<td>正常</td>
+                <td><a href="edit.html">执行更新</a></td>
+    </tr>
+ <tr>
+         {% for i in data13 %}
+                <td>{{ i|capfirst }}</td>
+            {% endfor %}
+				<td>正常</td>
+                <td><a href="edit.html">执行更新</a></td>
+    </tr>
+ <tr>
+         {% for i in data14 %}
+                <td>{{ i|capfirst }}</td>
+            {% endfor %}
+				<td>正常</td>
+                <td><a href="edit.html">执行更新</a></td>
+    </tr>
+ <tr>
+         {% for i in data15 %}
+                <td>{{ i }}</td>
+            {% endfor %}
+				<td>正常</td>
+                <td><a href="edit.html">执行更新</a></td>
+    </tr>
+ <tr>
+         {% for i in data16 %}
+                <td>{{ i }}</td>
+            {% endfor %}
+				<td>正常</td>
+                <td><a href="edit.html">执行更新</a></td>
+    </tr>
+ <tr>
+         {% for i in data17 %}
+                <td>{{ i }}</td>
+            {% endfor %}
+				<td>正常</td>
+                <td><a href="edit.html">执行更新</a></td>
+    </tr>
+ <tr>
+         {% for i in data18 %}
+                <td>{{ i }}</td>
+            {% endfor %}
+				<td>正常</td>
+                <td><a href="edit.html">执行更新</a></td>
+    </tr>
+ <tr>
+         {% for i in data19 %}
+                <td>{{ i }}</td>
+            {% endfor %}
+				<td>正常</td>
+                <td><a href="edit.html">执行更新</a></td>
+    </tr>
+ <tr>
+         {% for i in data20 %}
+                <td>{{ i }}</td>
+            {% endfor %}
+				<td>正常</td>
+                <td><a href="edit.html">执行更新</a></td>
+    </tr>
+
+</table>
+
+</body>
+</html>
+<script>
+    $(function () {
+
+
+		$('#addnew').click(function(){
+
+				window.location.href="add.html";
+		 });
+
+
+    });
+
+</script>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <title>API简介</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+       <link href="static/assets/css/dpl-min.css" rel="stylesheet" type="text/css" />
+    <link href="static/assets/css/bui-min.css" rel="stylesheet" type="text/css" />
+    <link href="static/assets/css/page-min.css" rel="stylesheet" type="text/css" />   <!-- 下面的样式，仅是为了显示代码，而不应该在项目中使用-->
+   <link href="static/assets/css/prettify.css" rel="stylesheet" type="text/css" />
+   <style type="text/css">
+    code {
+      padding: 0px 4px;
+      color: #d14;
+      background-color: #f7f7f9;
+      border: 1px solid #e1e1e8;
+    }
+   </style>
+ </head>
+ <body>
+  
+  <div class="container">
+    <div class="row">
+      <div class="span24">
+        <h2>简介</h2>
+        <p>API分一下几种类型</p>
+        <ol>
+          <li>对内接口，为业务接口提供基础服务的，比如，邮件接口、物流接口、发送API订单至ERP接口</li>
+          <li>业务接口，给客户提供服务的接口，比如，广东政采接口、宝钢接口</li>
+        </ol>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span16">
+        <h3>API服务器</h3>
+        <p>两台ESXI，三个虚拟机</p>
+        <ol>
+          <li>API01:10.10.210.171</li>
+          <li>API02:10.10.210.172</li>
+          <li>APIJOB:10.10.210.131</li>
+        </ol>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span16">
+        <h3>APIjob</h3>
+        <p>每个API都有自己job</p>
+        <ol>
+          <li>商品联动</li>
+          <li>发送价套</li>
+          <li>拉去对方订单</li>
+          <li>发送订单到ERP</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="static/assets/js/jquery-1.8.1.min.js"></script>
+  <script type="text/javascript" src="static/assets/js/bui-min.js"></script>
+
+  <script type="text/javascript" src="static/assets/js/config-min.js"></script>
+  <script type="text/javascript">
+    BUI.use('common/page');
+  </script>
+  <!-- 仅仅为了显示代码使用，不要在项目中引入使用-->
+  <script type="text/javascript" src="static/assets/js/prettify.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      prettyPrint();
+    });
+  </script> 
+
+<body>
+</html>  

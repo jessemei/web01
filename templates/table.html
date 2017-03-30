@@ -1,0 +1,114 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href=/static/Css/bootstrap.css/>
+    <link rel="stylesheet" type="text/css" href= /static/Css/bootstrap-responsive.css/>
+    <link rel="stylesheet" type="text/css" href=/static/Css/style.css />
+    <script type="text/javascript" src=/static/Js/jquery.js></script>
+    <script type="text/javascript" src=/static/Js/jquery.sorted.js></script>
+    <script type="text/javascript" src=/static/Js/bootstrap.js></script>
+    <script type="text/javascript" src=/static/Js/ckform.js></script>
+    <script type="text/javascript" src=/static/Js/common.js></script>
+
+ 
+
+    <style type="text/css">
+        body {
+            padding-bottom: 40px;
+        }
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+
+        @media (max-width: 980px) {
+            /* Enable use of floated navbar text */
+            .navbar-text.pull-right {
+                float: none;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+<form class="form-inline definewidth m20" action="index.html" method="get">    
+    资产名称：
+    <input type="text" name="username" id="username"class="abc input-default" placeholder="" value="">&nbsp;&nbsp;  
+    <button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp; <button type="button" class="btn btn-success" id="addnew">新增资产</button>
+</form>
+<table class="table table-bordered table-hover definewidth m10">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>资产标签</th>
+        <th>保管人</th>
+        <th>品牌</th>
+        <th>数量</th>
+        <th>资产原值</th>
+        <th>使用状态</th>
+        <th>购进时间</th>
+        <th>资产类型</th>
+        <th>单位</th>
+        <th>部门</th>
+    </tr>
+    </thead>
+    {% for foo in data %}
+	     <tr>
+            <td>{{ foo.id }}</td>
+            <td>{{ foo.Zcbh }}</td>
+            <td>{{ foo.Bgr }}</td>
+            <td>{{ foo.Brand }}</td>
+            <td>{{ foo.Count }}</td>
+            <td>{{ foo.Price }}</td>
+            <td>{{ foo.Status }}</td>
+            <td>{{ foo.gtime }}</td>
+            <td>{{ foo.Atype }}</td>
+            <td>{{ foo.Aunit }}</td>
+            <td>{{ foo.Dname_id }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+    <h1>{{ foo.Bgr }}</h1>
+
+
+
+
+
+</body>
+</html>
+<script>
+    $(function () {
+        
+
+		$('#addnew').click(function(){
+
+				window.location.href="add.html";
+		 });
+
+
+    });
+
+	function del(id)
+	{
+		
+		
+		if(confirm("确定要删除吗？"))
+		{
+		
+			var url = "index.html";
+			
+			window.location.href=url;		
+		
+		}
+	
+	
+	
+	
+	}
+</script>

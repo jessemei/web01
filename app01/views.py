@@ -238,3 +238,10 @@ def zichan(request):
     p = Asset.objects.all()
 
     return render(request,'pc1.html',{'data':p})
+
+stoken = 'colipuadmin'
+
+def weixin(request):
+    print(request.GET)
+
+    return HttpResponse('ok')

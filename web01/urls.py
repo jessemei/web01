@@ -39,4 +39,5 @@ urlpatterns = [
     url(r'^logout/',views.logout,),
     url(r'^apiorder/',views.aprorder,),
     url(r'^search/',views.search,),
+    url(r'^weixin/',views.weixin,),
 ]

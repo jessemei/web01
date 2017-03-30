@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script>
+    function method1(tableid) {
+
+    var curTbl = document.getElementById(tableid);
+    var oXL = new ActiveXObject("Excel.Application");
+    var oWB = oXL.Workbooks.Add();
+    var oSheet = oWB.ActiveSheet;
+    var sel = document.body.createTextRange();
+    sel.moveToElementText(curTbl);
+    sel.select();
+    sel.execCommand("Copy");
+    oSheet.Paste();
+    oXL.Visible = true;
+
+}
+
+</script>
+</head>
+<body>
+<table id="tableExcel" width="100%" border="1" cellspacing="0" cellpadding="0">
+    <tr>
+        <td colspan="5" align="center">html 表格导出道Excel </td>
+    </tr>
+    <tr>
+        <td>列标题1td>
+        <td>列标题2td>
+        <td>类标题3td>
+        <td>列标题4td>
+        <td>列标题5td>
+    tr>
+    <tr>
+        <td>aaatd>
+        <td>bbbtd>
+        <td>ccctd>
+        <td>dddtd>
+        <td>eeetd>
+    tr>
+    <tr>
+        <td>AAAtd>
+        <td>BBBtd>
+        <td>CCCtd>
+        <td>DDDtd>
+        <td>EEEtd>
+    tr>
+    <tr>
+        <td>FFFtd>
+        <td>GGGtd>
+        <td>HHHtd>
+        <td>IIItd>
+        <td>JJJtd>
+   tr>
+</table>
+
+<button type="button" onclick="method1("tableExcel")">导出excel</button>
+
+
+
+</body>
+</html>

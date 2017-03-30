@@ -1,0 +1,45 @@
+
+<head>
+    <link rel="stylesheet" type="text/css" href=/static/Css/bootstrap.css/>
+    <link rel="stylesheet" type="text/css" href= /static/Css/bootstrap-responsive.css/>
+    <link rel="stylesheet" type="text/css" href=/static/Css/style.css />
+    <script type="text/javascript" src=/static/Js/jquery.js></script>
+    <script type="text/javascript" src=/static/Js/jquery.sorted.js></script>
+    <script type="text/javascript" src=/static/Js/bootstrap.js></script>
+    <script type="text/javascript" src=/static/Js/ckform.js></script>
+    <script type="text/javascript" src=/static/Js/common.js></script>
+</head>
+<div class="container-fluid" style="width: 100%">
+	<div class="row-fluid">
+		<div style="background-color: #428BCA;width: 100%;margin: 0px" class="span12">
+			<h3>
+				CMDB系统
+			</h3>
+		</div>
+	</div>
+	<div  class="row-fluid">
+		<div style="background-color:#7ab5d3;height: 600px" class="span2">
+			<ol>
+				<li>
+					<input type="button" value="固定资产" onclick="test2()">
+				</li>
+				<li>
+					<input type="button" value="API管理" onclick="test()">
+				</li>
+			</ol>
+		</div>
+    <Iframe  id="test1" src="http://127.0.0.1:8000/zichan/"; width="1200" height="601" scrolling="no" frameborder="0">
+
+</iframe>
+<script>
+    function test() {
+            var test = document.getElementById('test1')
+            test.setAttribute('src','http://127.0.0.1:8000/api/')
+    }
+       function test2() {
+            var test = document.getElementById('test1')
+            test.setAttribute('src','http://127.0.0.1:8000/zichan/')
+    }
+
+
+</script>
