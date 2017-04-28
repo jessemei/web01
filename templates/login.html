@@ -6,12 +6,11 @@
     <link rel="stylesheet" type="text/css" href=/static/Css/bootstrap.css/>
     <link rel="stylesheet" type="text/css" href= /static/Css/bootstrap-responsive.css/>
     <link rel="stylesheet" type="text/css" href=/static/Css/style.css />
-    <script type="text/javascript" src="static/assets/Js/jquery.js"></script>
-    <script type="text/javascript" src="static/assets/Js/jquery.sorted.js"></script>
-    <script type="text/javascript" src="static/assets/Js/bootstrap.js"></script>
-    <script type="text/javascript" src="static/assets/Js/ckform.js"></script>
-    <script type="text/javascript" src="static/assets/Js/common.js"></script>
 </head>
+<script>
+
+
+</script>
 <body>
 <div class="container">
     <style type="text/css">
@@ -51,19 +50,35 @@
         h2 {
     font-size: 24.5px;
 }
+        #table{
+            height: 100px;
+        }
 
     </style>
+    <div id="form">
     <form class="form-signin" method="post" action="login/">
         <h2 class="form-signin-heading">COLIPU运维平台</h2>
+        <div id="table">
+            <div>
         <input type="text" name="username" class="input-block-level" placeholder="账号">
+            </div>
+            <div>
         <input type="password" name="password" class="input-block-level" placeholder="密码">
-        <br>
-        <span>{{ error }}</span>
-        <p><button class="btn btn-large btn-primary" type="submit">登录</button></p>
+            </div>
+
+        </div>
+        {% if error %}
+                <div><h4>{{ error }}</h4></div>
+            {% endif %}
+        <div>
+        <button class="btn btn-large btn-primary" type="submit">登录</button>
+            </div>
     </form>
+        </div>
 
 
 
 </div>
 </body>
+
 </html>

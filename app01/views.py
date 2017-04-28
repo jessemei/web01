@@ -26,18 +26,16 @@ def deco(fun):
 
 @deco
 def index(request):
-    user2 = request.session.get('user')
-    return render(request, 'index1.html',{'user':user2})
+    username = request.session.get('user')
+    return render(request, 'index1.html',{'user':username})
 @deco
 def asset1(request):
     if request.method == 'GET':
-        p = Asset.objects.all()
-        #print(type(p))
-        return render(request,"table.html",{'data':p})
+        data = Asset.objects.all()
+        return render(request,"table.html",{'data':data})
 @deco
 def add1(request):
     if request.method == 'GET':
-        #p = Asset.objects.all()
         return render(request, "asset_add.html")
     else:
         dname = request.POST['dname_id']
@@ -50,16 +48,15 @@ def add1(request):
         count  = request.POST['count']
         gdate = request.POST['gdate']
         status = request.POST['status']
-        print(dname,atype,gdate)
         return HttpResponse('ok')
 
 @deco
 def fenye(request,page1):
     if request.method == 'GET':
-       zongyeshu = Asset.objects.all().count()
-       c = 10
+       zongyeshu = Asset.objects.all().count()#获取总页数
+       c = 10 #每页数
        if zongyeshu%c != 0:
-           zpage = zongyeshu//c + 1
+           zpage = zongyeshu//c + 1 #如果总的页数除每页数有余数则加1
        else:
            zpage = zongyeshu//c
 
@@ -106,15 +103,13 @@ def passwd(pw):
 
 def login(request):
     if request.method == 'POST':
-        user1 = request.POST['username']
+        username = request.POST['username']
         pw = passwd(request.POST['password'])
-        a = user.objects.filter(username=user1)
-        print(a)
-        if user.objects.filter(username=user1).count() != 0:
-            sqlpw = user.objects.filter(username=user1).values('password')[0]['password']
-            if user.objects.filter(username=user1) != None and pw == sqlpw:
-                request.session['is_login'] = True
-                request.session['user'] = user1
+        if user.objects.filter(username=username).count() != 0:#判断用户是否存在
+            sqlpw = user.objects.filter(username=username).values('password')[0]['password']#获取用户密码
+            if user.objects.filter(username=username) != None and pw == sqlpw:
+                request.session['is_login'] = True#加入session标记
+                request.session['user'] = username#当前用户名加入session
                 return redirect('/index')
             else:
                 return render(request, 'login.html', {'error': '密码错误！'})

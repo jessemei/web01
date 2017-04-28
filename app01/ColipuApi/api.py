@@ -24,7 +24,6 @@ def GetToken(url,values):
         dic = json.loads(a)
         return dic
 
-
 class ColipuApi(object):
     timestamp = time.strftime("%Y%m%d", time.localtime())
 
@@ -171,30 +170,51 @@ class ColipuApi(object):
         return data
 
 
-def order(self,action,orderid):
-    token = self.getToken()
-    values = {'token': token,
+    def order(self,action,orderid):
+        token = self.getToken()
+        values = {'token': token,
               'order_id': orderid,}
-    url = 'http://%s/api/order/%s' % (self.url,action)
-    data = self.getData(values, url)
-    return data
+        url = 'http://%s/api/order/%s' % (self.url,action)
+        data = self.getData(values, url)
+        return data
+
+
+    def orderstatus(self,orderid):
+        token = self.getToken()
+        values = {'token': token,
+              'order_id': orderid}
+        url = 'http://%s/api/order/select' % self.url
+        data = self.getData(values, url)
+        return data
 
 
 
-bozhou = ColipuApi('YiXing','UmeCu1VOuI','10.10.210.131:10030')
-guotou = ColipuApi('GuoTou','qckOszPUSMrC','10.10.210.131:10012')
-yiyuan = ColipuApi('WHYiYuan','My9UxQnggJIC','180.166.163.28:10119')
 
-a=bozhou.submit()
+#zhichubao = ColipuApi('HeFeiShi','dYP3XUdGjC9t','180.166.163.28:10103')
+guotou = ColipuApi('ZhiChuBao','colipu_uat','180.166.163.28:10033')
+a = guotou.getPools()
+#b = zhichubao.getStates('1145584')
+
+print(a)
+
+
+
+
+
+
+
+
+
+'''
 a=guotou.getDatail()
-a=yiyuan.getStates('1042192,101008,1042192,1037248,1054995,1045382')
-b=yiyuan.getPrices('1042192,101008,1042192,1037248,1054995,1045382')
+b=yiyuan.getPrices('335006,1042192,1045382,1041636,1038869,332060,355034,355005,1027391,1045281,1043008,325015,1054995,1038644,1037248')
+a=yiyuan.getStates('335006,1042192,1045382,1041636,1038869,332060,355034,355005,1027391,1045281,1043008,325015,1054995,1038644,1037248')
+c=yiyuan.getStates('335006,1042192,1045382,1041636,1038869,332060,355034,355005,1027391,1045281,1043008,325015,1054995,1038644,1037248')
 #a = bozhou.getArea('cities',32)
 #a = bozhou.getArea('getCounty',115)
 #b = bozhou.getArea('cities')
 
-
-
+'''
 
 
 

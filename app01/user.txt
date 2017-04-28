@@ -1,2 +1,2 @@
-Enable-Mailbox -Identity 'colipu.local/colipu/"Direct Sales Dept."/ÑîÓïÍ®' -Alias 'yangyutong' -Database 'DirectSelling'
-Ñî,ÓïÍ®,ÑîÓïÍ®,yangyutong@colipu.local,colipu.local,Aa123456,"Direct Sales Dept.",yangyutong,
+Enable-Mailbox -Identity 'colipu.local/colipu/"Direct Sales Dept."/ÇÇÅô' -Alias 'qiaopeng' -Database 'DirectSelling'
+ÇÇ,Åô,ÇÇÅô,qiaopeng@colipu.local,colipu.local,Aa123456,"Direct Sales Dept.",qiaopeng,
