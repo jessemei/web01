@@ -1,0 +1,5 @@
+Enable-Mailbox -Identity 'colipu.local/colipu/BJ_Warehouse/¿ÓÀß' -Alias 'lishuai' -Database 'Private'
+¿Ó,Àß,¿ÓÀß,lishuai@colipu.local,colipu.local,Aa123456,BJ_Warehouse,lishuai,
+<paramiko.ChannelFile from <paramiko.Channel 0 (open) window=2097152 -> <paramiko.Transport at 0x4a1df90 (cipher aes128-ctr, 128 bits) (active; 1 open channel(s))>>>
+[]
+[['BaoGang', 'BoZhou', 'changSha', 'chenGuang', 'GuoTou', 'GuoWang', 'HaiNan', 'NanTong', 'XiangXi', 'ZhongTie'], ['3', '0', '0', '0', '0', '0', '0', '0', '0', '0'], ['1931', '27', '0', '1383', '150', '0', '10', '62', '1', '0'], ['0', '0', '0', '0', '64', '0', '0', '0', '0', '0'], ['0', '9070', '0', '0', '4620', '1599', '717', '6649', '5936']]
